@@ -6,7 +6,8 @@ export async function POST(request: Request) {
   
   if (password === process.env.LOGIN_PASSWORD) {
     // Set a cookie to maintain the session
-    cookies().set('auth', 'true', {
+    const cookieStore = await cookies()
+    cookieStore.set('auth', 'true', {
       httpOnly: true,
       secure: process.env.NODE_ENV === 'production',
       sameSite: 'strict',
