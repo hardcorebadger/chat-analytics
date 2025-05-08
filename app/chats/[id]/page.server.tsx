@@ -1,4 +1,5 @@
-import ChatPage from './page'
+import { Suspense } from 'react'
+import ChatView from './ChatView'
 
 async function getChatData(id: string) {
   const response = await fetch(
@@ -19,11 +20,25 @@ async function getChatData(id: string) {
   return response.json()
 }
 
-export default async function ChatPageServer({
+function LoadingState() {
+  return (
+    <div className="min-h-screen flex items-center justify-center bg-black">
+      <div className="text-neutral-400 text-lg">Loading chat...</div>
+    </div>
+  )
+}
+
+export default async function ChatPage({
   params,
 }: {
-  params: { id: string }
+  params: Promise<{ id: string }>
 }) {
-  const data = await getChatData(params.id)
-  return <ChatPage data={data} />
+  const { id } = await params
+  const data = await getChatData(id)
+  
+  return (
+    <Suspense fallback={<LoadingState />}>
+      <ChatView data={data} />
+    </Suspense>
+  )
 } 
