@@ -26,7 +26,8 @@ export default function Header() {
   };
 
   return (
-    <header className="w-full max-w-7xl mx-auto px-8 py-4">
+    <header className="w-full  border-b border-neutral-800">
+      <div className="w-full max-w-7xl mx-auto px-8 py-4">
       <div className="flex items-center justify-between">
         <form onSubmit={handleSubmit} className="flex items-center space-x-4">
           <input
@@ -56,6 +57,7 @@ export default function Header() {
         >
           Log out
         </button>
+      </div>
       </div>
     </header>
   );

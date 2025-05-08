@@ -38,7 +38,7 @@ export default async function ChatPage({
   const data = await getChatData(id)
   
   return (
-    <div className="min-h-screen bg-black">
+    <div className="min-h-scree">
       <Header />
       <Suspense fallback={<LoadingState />}>
         <ChatView data={data} />
