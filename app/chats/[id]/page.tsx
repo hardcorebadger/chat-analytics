@@ -2,9 +2,13 @@ import { Suspense } from 'react'
 import ChatView from './ChatView'
 import Header from './Header'
 
-async function getChatData(id: string) {
+async function getChatData(id: string, env?: string) {
+  const baseUrl = env === 'staging' 
+    ? 'https://staging-generative-assets-api.hellopublic.com/api/analytics'
+    : 'https://generative-assets-api.hellopublic.com/api/analytics';
+
   const response = await fetch(
-    `https://staging-generative-assets-api.hellopublic.com/api/analytics/chats/${id}`,
+    `${baseUrl}/chats/${id}`,
     {
       headers: {
         'Authorization': `Bearer ${process.env.ANALYTICS_API_KEY}`,
@@ -31,14 +35,16 @@ function LoadingState() {
 
 export default async function ChatPage({
   params,
+  searchParams,
 }: {
   params: Promise<{ id: string }>
+  searchParams: { env?: string }
 }) {
   const { id } = await params
-  const data = await getChatData(id)
+  const data = await getChatData(id, searchParams.env)
   
   return (
-    <div className="min-h-scree">
+    <div className="min-h-screen ">
       <Header />
       <Suspense fallback={<LoadingState />}>
         <ChatView data={data} />

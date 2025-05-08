@@ -7,12 +7,16 @@ export default function Home() {
   const router = useRouter();
   const [chatId, setChatId] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+  const [env, setEnv] = useState<'prod' | 'staging'>('prod');
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     if (chatId.trim()) {
       setIsLoading(true);
-      router.push(`/chats/${encodeURIComponent(chatId.trim())}`);
+      const url = env === 'staging' 
+        ? `/chats/${encodeURIComponent(chatId.trim())}?env=staging`
+        : `/chats/${encodeURIComponent(chatId.trim())}`;
+      router.push(url);
     }
   };
 
@@ -36,25 +40,35 @@ export default function Home() {
         </div>
 
         <form onSubmit={handleSubmit} className="space-y-4">
-          <div>
-            <input
-              type="text"
-              value={chatId}
-              onChange={(e) => setChatId(e.target.value)}
-              placeholder="Enter chat ID"
-              className="w-full px-4 py-2 border border-neutral-800 rounded-lg focus:ring-2 focus:ring-neutral-700 focus:border-transparent bg-neutral-900 text-white placeholder-neutral-600"
-              required
-            />
+          <div className="space-y-4">
+            <div className="flex items-center space-x-4">
+              <input
+                type="text"
+                value={chatId}
+                onChange={(e) => setChatId(e.target.value)}
+                placeholder="Enter chat ID"
+                className="flex-1 px-4 py-2 border border-neutral-800 rounded-lg focus:ring-2 focus:ring-neutral-700 focus:border-transparent bg-neutral-900 text-white placeholder-neutral-600"
+                required
+              />
+              <select
+                value={env}
+                onChange={(e) => setEnv(e.target.value as 'prod' | 'staging')}
+                className="px-4 py-2 border border-neutral-800 rounded-lg focus:ring-2 focus:ring-neutral-700 focus:border-transparent bg-neutral-900 text-white"
+              >
+                <option value="prod">Production</option>
+                <option value="staging">Staging</option>
+              </select>
+            </div>
+            <button
+              type="submit"
+              disabled={isLoading}
+              className={`w-full bg-white hover:bg-neutral-100 text-black font-medium py-2 px-4 rounded-lg transition-colors cursor-pointer ${
+                isLoading ? 'opacity-50 cursor-not-allowed' : ''
+              }`}
+            >
+              {isLoading ? 'Loading...' : 'View Chat'}
+            </button>
           </div>
-          <button
-            type="submit"
-            disabled={isLoading}
-            className={`w-full bg-white hover:bg-neutral-100 text-black font-medium py-2 px-4 rounded-lg transition-colors cursor-pointer ${
-              isLoading ? 'opacity-50 cursor-not-allowed' : ''
-            }`}
-          >
-            {isLoading ? 'Loading...' : 'View Chat'}
-          </button>
         </form>
 
         <button
