@@ -1,0 +1,90 @@
+{
+    "session_id": "123",
+    "user_id": "123",
+    "metadata": {
+        "generator_id": "6e4e9c95adf44179a35836d1d356a750",
+        "cloned_from": null,
+        "owner_id": "40f25e29-47bf-4ac6-9fd5-302cdacf9e25",
+        "owner_username": "next-hashtag",
+        "latest_portfolio_id": "2025-05-08T17:02:25.583755+00:00",
+        "published": true,
+        "time_of_publishing": "2025-05-08T17:15:27.544895Z",
+        "view_count": 2,
+        "watcher_count": 0,
+        "asset_score": 1.08,
+        "number_of_assets": 18,
+        "sample_assets": [
+            "META",
+            "UBER",
+            "PEP"
+        ],
+        "latest_icon_url": "https://storage.iconkit.ai/icons/icon_kGJd0suG8NOU8ldm-0.png",
+        "latest_title": "Super Bowl Ad Stars",
+        "latest_description": "A collection of publicly traded companies that regularly invest in high-profile Super Bowl advertisements, showcasing their brand power and marketing reach through America's biggest sporting event.",
+        "latest_slug": "super-bowl-ad-stars",
+        "user_icon_url": null,
+        "user_title": null,
+        "user_description": null,
+        "user_slug": null,
+        "time_of_creation": "2025-05-08T17:02:18.310344Z",
+        "time_of_latest_update": "2025-05-08T17:15:27.544895Z",
+        "state": "IDLE"
+    },
+    "messages": [
+        {
+            "content": "Invest in companies that run Superbowl ads",
+            "role": "user"
+        },
+        {
+            "content": [
+                {
+                    "type": "text",
+                    "text": "I'd be happy to create a portfolio focused on companies that run Super Bowl ads! These are typically major brands with significant marketing budgets that want to reach massive audiences during one of America's biggest annual events.\n\nLet me generate a portfolio for you based on this theme:"
+                },
+                {
+                    "name": "generate_portfolio",
+                    "input": {
+                        "title": "Super Bowl Ad Stars",
+                        "allocations": [
+                            {
+                                "name": "Super Bowl Advertisers",
+                                "decorated_output": "Companies known for their **Super Bowl commercials** and major **advertising campaigns** during the big game",
+                                "totalAllocation": 1.0,
+                                "filters": {
+                                    "websearch": "publicly traded companies that run Super Bowl ads"
+                                },
+                                "weightBy": {
+                                    "metric": "score",
+                                    "order": "desc"
+                                }
+                            }
+                        ],
+                        "description": "A collection of publicly traded companies that regularly invest in high-profile Super Bowl advertisements, showcasing their brand power and marketing reach through America's biggest sporting event."
+                    },
+                    "id": "toolu_bdrk_01F4hp895NW3o98iNeH2D5mV",
+                    "type": "tool_use"
+                }
+            ],
+            "role": "assistant"
+        },
+        {
+            "content": [
+                {
+                    "type": "tool_result",
+                    "tool_use_id": "toolu_bdrk_01F4hp895NW3o98iNeH2D5mV",
+                    "content": "{\n  \"rows\": [\n    {\n      \"symbol\": \"META\",\n      \"reason\": \"Meta ran a Super Bowl ad in 2025 promoting Ray-Ban Meta Glasses.\",\n      \"score\": 0.99,\n      \"marketCap\": 1346944329200.0,\n      \"name\": \"Meta\",\n      \"effectiveWeight\": 0.057558\n    },\n    {\n      \"symbol\": \"UBER\",\n      \"reason\": \"Uber Eats ran a Super Bowl ad in 2025 featuring celebrity endorsements.\",\n      \"score\": 0.99,\n      \"marketCap\": 146074511000.0,\n      \"name\": \"Uber\",\n      \"effectiveWeight\": 0.057558\n    },\n    {\n      \"symbol\": \"PEP\",\n      \"reason\": \"Lay's, a PepsiCo brand, ran a Super Bowl ad in 2025.\",\n      \"score\": 0.98,\n      \"marketCap\": 207603955000.0,\n      \"name\": \"PepsiCo\",\n      \"effectiveWeight\": 0.056977\n    },\n    {\n      \"symbol\": \"PFE\",\n      \"reason\": \"Pfizer ran a 60-second Super Bowl ad in 2025 focused on cancer breakthroughs.\",\n      \"score\": 0.98,\n      \"marketCap\": 137759520500.0,\n      \"name\": \"Pfizer\",\n      \"effectiveWeight\": 0.056977\n    },\n    {\n      \"symbol\": \"K\",\n      \"reason\": \"Kellanova's Pringles brand ran an ad during Super Bowl 2025.\",\n      \"score\": 0.98,\n      \"marketCap\": 28497580800.0,\n      \"name\": \"Kellogg\",\n      \"effectiveWeight\": 0.056977\n    },\n    {\n      \"symbol\": \"STLA\",\n      \"reason\": \"Stellantis' Jeep and Ram brands both aired Super Bowl ads in 2025.\",\n      \"score\": 0.98,\n      \"marketCap\": 26815557600.0,\n      \"name\": \"Stellantis N.V. \",\n      \"effectiveWeight\": 0.056977\n    },\n    {\n      \"symbol\": \"NKE\",\n      \"reason\": \"Nike returned to the Super Bowl with an ad in 2025 after a 27-year hiatus.\",\n      \"score\": 0.97,\n      \"marketCap\": 82210045400.0,\n      \"name\": \"NIKE\",\n      \"effectiveWeight\": 0.056395\n    },\n    {\n      \"symbol\": \"GOOGL\",\n      \"reason\": \"Google Workspace was mentioned as having a Super Bowl spot in 2025.\",\n      \"score\": 0.96,\n      \"marketCap\": 1837276800000.0,\n      \"name\": \"Alphabet\",\n      \"effectiveWeight\": 0.055814\n    },\n    {\n      \"symbol\": \"PM\",\n      \"reason\": \"Paramount aired a trailer for 'Mission: Impossible \– The Final Reckoning' during the 2025 Super Bowl.\",\n      \"score\": 0.96,\n      \"marketCap\": 251996160200.0,\n      \"name\": \"Philip Morris\",\n      \"effectiveWeight\": 0.055814\n    },\n    {\n      \"symbol\": \"GDDY\",\n      \"reason\": \"GoDaddy ran a campaign around the 2025 Super Bowl broadcast.\",\n      \"score\": 0.96,\n      \"marketCap\": 25114720500.0,\n      \"name\": \"GoDaddy\",\n      \"effectiveWeight\": 0.055814\n    },\n    {\n      \"symbol\": \"FOX\",\n      \"reason\": \"Fox Corporation broadcast and sold advertising slots for Super Bowl LIX in 2025.\",\n      \"score\": 0.96,\n      \"marketCap\": 21011853500.0,\n      \"name\": \"Twenty-First Century Fox\",\n      \"effectiveWeight\": 0.055814\n    },\n    {\n      \"symbol\": \"GIS\",\n      \"reason\": \"H\äagen-Dazs, owned by General Mills in the U.S., aired its first Super Bowl ad in 2025.\",\n      \"score\": 0.95,\n      \"marketCap\": 33387233000.0,\n      \"name\": \"General Mills\",\n      \"effectiveWeight\": 0.055233\n    },\n    {\n      \"symbol\": \"SKX\",\n      \"reason\": \"Skechers ran a Super Bowl commercial in 2025.\",\n      \"score\": 0.94,\n      \"marketCap\": 7312420800.0,\n      \"name\": \"Skechers U.S.A.\",\n      \"effectiveWeight\": 0.054651\n    },\n    {\n      \"symbol\": \"INTU\",\n      \"reason\": \"TurboTax, a brand of Intuit, aired a Super Bowl ad in 2025.\",\n      \"score\": 0.93,\n      \"marketCap\": 167326243900.0,\n      \"name\": \"Intuit\",\n      \"effectiveWeight\": 0.05407\n    },\n    {\n      \"symbol\": \"GM\",\n      \"reason\": \"GM brands are frequent Super Bowl advertisers.\",\n      \"score\": 0.93,\n      \"marketCap\": 45670591800.0,\n      \"name\": \"General Motors\",\n      \"effectiveWeight\": 0.05407\n    },\n    {\n      \"symbol\": \"AMZN\",\n      \"reason\": \"Amazon is a frequent Super Bowl advertiser (Alexa, Prime Video).\",\n      \"score\": 0.92,\n      \"marketCap\": 1890735657000.0,\n      \"name\": \"Amazon\",\n      \"effectiveWeight\": 0.053488\n    },\n    {\n      \"symbol\": \"F\",\n      \"reason\": \"Ford is a regular Super Bowl advertiser.\",\n      \"score\": 0.92,\n      \"marketCap\": 37578397500.0,\n      \"name\": \"Ford Motor Company\",\n      \"effectiveWeight\": 0.053488\n    },\n    {\n      \"symbol\": \"SBUX\",\n      \"reason\": \"Starbucks is a well-known brand that has advertised during the Super Bowl.\",\n      \"score\": 0.9,\n      \"marketCap\": 95086189000.0,\n      \"name\": \"Starbucks\",\n      \"effectiveWeight\": 0.052326\n    }\n  ],\n  \"columns\": [\n    {\n      \"displayName\": \"Market Cap\",\n      \"info\": null,\n      \"type\": \"number\",\n      \"format\": \"$B\",\n      \"key\": \"marketCap\"\n    },\n    {\n      \"displayName\": \"Relevance\",\n      \"info\": \"A score generated by the LLM based on it's confidence in the company's relevance to the query\",\n      \"type\": \"number\",\n      \"format\": \"pill-bar\",\n      \"key\": \"score\"\n    },\n    {\n      \"displayName\": \"Reason\",\n      \"info\": \"The agent's reasoning for including the company\",\n      \"type\": \"string\",\n      \"format\": null,\n      \"key\": \"reason\"\n    },\n    {\n      \"displayName\": \"Weight\",\n      \"info\": \"The weight of the company in the portfolio\",\n      \"type\": \"number\",\n      \"format\": \"%\",\n      \"key\": \"effectiveWeight\"\n    }\n  ]\n}"
+                }
+            ],
+            "role": "user"
+        },
+        {
+            "content": [
+                {
+                    "type": "text",
+                    "text": "\n\n# Super Bowl Ad Stars\n\nI've created a portfolio featuring companies that are known for their Super Bowl advertising presence. This collection includes major brands that regularly invest in the high-profile, multi-million dollar ad slots during America's biggest sporting event.\n\n## Portfolio Overview\n\nThe portfolio captures a diverse range of industries that recognize the massive marketing opportunity of the Super Bowl:\n\n- **Tech giants** like Meta, Google, and Amazon that use the platform to showcase their latest innovations\n- **Food and beverage companies** including PepsiCo, Kellanova (Pringles), and General Mills\n- **Automotive manufacturers** such as Stellantis, GM, and Ford\n- **Consumer services** like Uber, GoDaddy, and Skechers\n- **Media companies** like Fox Corporation that benefit from broadcasting the event\n\nMany of these companies see the Super Bowl as a critical marketing moment to reach over 100 million viewers at once. This portfolio represents brands with substantial marketing budgets that view the significant investment (approximately $7 million for a 30-second spot) as worthwhile for brand building and consumer awareness.\n\nWould you like me to adjust this portfolio in any way? Perhaps focus on specific industries within Super Bowl advertisers or modify the allocation strategy?"
+                }
+            ],
+            "role": "assistant"
+        }
+    ]
+}
