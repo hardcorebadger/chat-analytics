@@ -27,7 +27,7 @@ async function getChatData(id: string, env?: string) {
 
 function LoadingState() {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-black">
+    <div className="min-h-screen flex items-center justify-center ">
       <div className="text-neutral-400 text-lg">Loading chat...</div>
     </div>
   )
@@ -46,7 +46,7 @@ export default async function ChatPage({
   const data = await getChatData(id, env)
   
   return (
-    <div className="min-h-screen bg-black">
+    <div className="min-h-screen ">
       <Header />
       <Suspense fallback={<LoadingState />}>
         <ChatView data={data} />
