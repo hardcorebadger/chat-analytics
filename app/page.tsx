@@ -30,7 +30,7 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center p-8 bg-black">
+    <div className="min-h-screen flex flex-col items-center justify-center p-8 ">
       <main className="max-w-md w-full space-y-8">
         <div className="text-center">
           <h1 className="text-4xl font-bold mb-4 text-white">Chat Viewer</h1>

@@ -33,18 +33,20 @@ function LoadingState() {
   )
 }
 
+interface PageProps {
+  params: Promise<{ id: string }>
+  searchParams: Promise<{ env?: string }>
+}
+
 export default async function ChatPage({
   params,
   searchParams,
-}: {
-  params: Promise<{ id: string }>
-  searchParams: { env?: string }
-}) {
-  const { id } = await params
-  const data = await getChatData(id, searchParams.env)
+}: PageProps) {
+  const [{ id }, { env }] = await Promise.all([params, searchParams])
+  const data = await getChatData(id, env)
   
   return (
-    <div className="min-h-screen ">
+    <div className="min-h-screen bg-black">
       <Header />
       <Suspense fallback={<LoadingState />}>
         <ChatView data={data} />
