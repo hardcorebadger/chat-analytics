@@ -1,5 +1,6 @@
 import { Suspense } from 'react'
 import ChatView from './ChatView'
+import Header from './Header'
 
 async function getChatData(id: string) {
   const response = await fetch(
@@ -37,8 +38,11 @@ export default async function ChatPage({
   const data = await getChatData(id)
   
   return (
-    <Suspense fallback={<LoadingState />}>
-      <ChatView data={data} />
-    </Suspense>
+    <div className="min-h-screen bg-black">
+      <Header />
+      <Suspense fallback={<LoadingState />}>
+        <ChatView data={data} />
+      </Suspense>
+    </div>
   )
 } 
