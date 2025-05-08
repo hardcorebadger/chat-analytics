@@ -4,6 +4,28 @@ import { useState } from 'react'
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
 import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism'
 
+type MessageContent = {
+  type: string;
+  text?: string;
+  tool_use_id?: string;
+  content?: string;
+  name?: string;
+  input?: any;
+  id?: string;
+}
+
+type Message = {
+  role: string;
+  content: string | MessageContent[];
+}
+
+type ToolUse = {
+  type: string;
+  name: string;
+  input: any;
+  id: string;
+}
+
 function JsonBlock({ json, className = '' }: { json: any; className?: string }) {
   const [isWrapped, setIsWrapped] = useState(true)
   const [copySuccess, setCopySuccess] = useState(false)
@@ -53,7 +75,7 @@ function JsonBlock({ json, className = '' }: { json: any; className?: string }) 
   )
 }
 
-function ToolCallBlock({ item, response }: { item: any; response?: any }) {
+function ToolCallBlock({ item, response }: { item: ToolUse; response?: any }) {
   return (
     <div className="w-full bg-neutral-800 rounded-lg p-0 ">
       <div className="font-mono font-bold text-sm text-white p-5">{item.name}</div>
@@ -72,14 +94,14 @@ function ToolCallBlock({ item, response }: { item: any; response?: any }) {
   )
 }
 
-function ChatHistory({ messages }: { messages: any[] }) {
+function ChatHistory({ messages }: { messages: Message[] }) {
   // Helper to find tool_result for a given tool_use id
   function findToolResult(toolUseId: string) {
     return messages.find(
       (msg) =>
         Array.isArray(msg.content) &&
         msg.content.some(
-          (c) => c.type === 'tool_result' && c.tool_use_id === toolUseId
+          (c: MessageContent) => c.type === 'tool_result' && c.tool_use_id === toolUseId
         )
     )
   }
@@ -101,12 +123,12 @@ function ChatHistory({ messages }: { messages: any[] }) {
     // Assistant message (text)
     if (msg.role === 'assistant' && Array.isArray(msg.content)) {
       // Only render text parts, skip tool_use/tool_result
-      const textParts = msg.content.filter((c) => c.type === 'text')
+      const textParts = msg.content.filter((c: MessageContent) => c.type === 'text')
       if (textParts.length > 0) {
         rendered.push(
           <div key={i} className="w-full mb-2">
             <div className=" text-white rounded-md py-6 w-full">
-              {textParts.map((c, idx) => (
+              {textParts.map((c: MessageContent, idx: number) => (
                 <div key={idx} className="whitespace-pre-wrap mb-2 last:mb-0">{c.text}</div>
               ))}
             </div>
@@ -114,7 +136,7 @@ function ChatHistory({ messages }: { messages: any[] }) {
         )
       }
       // Render tool_use + tool_result as a single block
-      const toolUses = msg.content.filter((c) => c.type === 'tool_use')
+      const toolUses = msg.content.filter((c: MessageContent) => c.type === 'tool_use')
       for (const toolUse of toolUses) {
         // Find the next user message with tool_result for this tool_use
         let responseJson = undefined
@@ -125,11 +147,11 @@ function ChatHistory({ messages }: { messages: any[] }) {
             Array.isArray(nextMsg.content)
           ) {
             const toolResult = nextMsg.content.find(
-              (c) => c.type === 'tool_result' && c.tool_use_id === toolUse.id
+              (c: MessageContent) => c.type === 'tool_result' && c.tool_use_id === toolUse.id
             )
             if (toolResult) {
               try {
-                responseJson = JSON.parse(toolResult.content)
+                responseJson = JSON.parse(toolResult.content || '')
               } catch {
                 responseJson = toolResult.content
               }
@@ -138,7 +160,7 @@ function ChatHistory({ messages }: { messages: any[] }) {
           }
         }
         rendered.push(
-          <ToolCallBlock key={i + '-tool-' + toolUse.id} item={toolUse} response={responseJson} />
+          <ToolCallBlock key={i + '-tool-' + toolUse.id} item={toolUse as ToolUse} response={responseJson} />
         )
       }
       continue
